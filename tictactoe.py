@@ -9,7 +9,10 @@ game_board = [[" ", " 1", "2", "3"],  # Define the game board
               ["2 ", "_", "_", "_"],
               ["3 ", "_", "_", "_"]]
 
-colored_board = game_board  # Make a copy of the board for colored output
+colored_board = [[" ", " 1", "2", "3"],  # Make a copy of the board for colored output
+                ["1 ", "_", "_", "_"],
+                ["2 ", "_", "_", "_"],
+                ["3 ", "_", "_", "_"]]  # Make a copy of the board for colored output
 free_spaces = 9
 
 
@@ -215,18 +218,9 @@ def main_loop():
         None
 
     Globals:
-        turn, game_board, colored_board, free_spaces
+        turn
     """
-    global turn, game_board, colored_board, free_spaces
-
-    game_board = [[" ", " 1", "2", "3"],  # Reset the game board
-                  ["1 ", "_", "_", "_"],
-                  ["2 ", "_", "_", "_"],
-                  ["3 ", "_", "_", "_"]]
-
-    colored_board = game_board  # Reset the colored board
-    free_spaces = 9  # Reset the free spaces counter
-    turn = 0  # Reset the turn counter
+    global turn
 
     while True:
         clear()  # Clear the terminal
