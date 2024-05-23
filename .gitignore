@@ -150,7 +150,7 @@ dmypy.json
 
 # stuff to ignore
 .DS_Store
-.idea
+.idea/misc.xml
 
 
 # pytype static type analyzer
