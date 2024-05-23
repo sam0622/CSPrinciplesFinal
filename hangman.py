@@ -8,6 +8,7 @@ Sam0622(GitHub Username)
 """
 # TODO: Make the main game loop, also comment and docstring
 from wonderwords import RandomWord
+from replit import clear
 
 
 class Hangman:
@@ -36,7 +37,6 @@ class Hangman:
 
         self.word = self.generate_word()
         self.incomplete_word = ["_" for _ in self.word]  # Adjust amount of underscores
-        print(self.incomplete_word)
         self.guessed_letters = []  # All guessed letters
         self.correct_guesses = []  # Only correct letters
         self.incorrect_guesses = []  # Only incorrect letters
@@ -67,9 +67,6 @@ class Hangman:
             None
 
         """
-        if len(self.incorrect_guesses) > 0:
-            print("Incorrect letters:")
-            self.print_incorrect_letters()
 
         while True:
             guess = input("Guess a letter: ")
@@ -97,12 +94,13 @@ class Hangman:
         if guess in self.word:
             length = len(self.word)
             for i in range(0, length):
-                print(i)
                 if guess == self.word[i]:
                     self.correct_guesses.append(guess)
                     self.incomplete_word[i] = guess
         else:
-            print("no")
+            self.guesses += 1
+            self.incorrect_guesses.append(guess)
+            print("That is not in the word, try again")
 
     def print_incorrect_letters(self):
         """
@@ -115,8 +113,8 @@ class Hangman:
             None
 
         """
-        for i in range(0, len(self.guessed_letters), 3):  # A loop that starts at zero, increments by three, and stops at the length of the list
-            print(" ".join(self.guessed_letters[i:i+3]))  # Prints the 3 entries from the list selected above
+        for i in range(0, len(self.incorrect_guesses), 3):  # A loop that starts at zero, increments by three, and stops at the length of the list
+            print(" ".join(self.incorrect_guesses[i:i+3]))  # Prints the 3 entries from the list selected above
 
     def print_hangman(self, stage):
         """
@@ -195,8 +193,19 @@ class Hangman:
                       |
                       """)
 
+    def main_loop(self):
+        while self.incomplete_word != self.word:
+            self.print_hangman(self.guesses)
+            self.print_incorrect_letters()
+            print(str.join("", self.incomplete_word))
+            self.guess()
+
+
+
+
+
+
+
 
 game = Hangman()
-print(game.word)
-game.guess()
-print(str.join("",game.incomplete_word))
+game.main_loop()
