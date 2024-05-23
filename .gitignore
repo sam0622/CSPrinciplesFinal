@@ -148,6 +148,11 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# stuff to ignore
+.DS_Store
+.idea
+
+
 # pytype static type analyzer
 .pytype/
 
