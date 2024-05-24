@@ -2,42 +2,45 @@ from replit import clear  # For clearing the terminal
 
 
 class Menu:
-    def __init__(self):
-        """
-        Does nothing
-        """
-        pass
 
     def choose_game(self):
         """
         A function that allows the user to choose a game.
         Will loop and ask the user what game they would like to play.
-        Try Except loop handles input errors.
+        Has four options, Wordle, Tic-Tac-Toe, Hangman, and Exit
+        The first three options take the user to the corresponding game, the Exit option kills the program
 
         Args:
             None
 
         Returns:
             None
+
         """
         while True:
-            clear()
+            clear()  # Clear the terminal
             print("Games:")
             print("1. Wordle")
             print("2. Tic-Tac-Toe")
+            print("3. Hangman")
             print("4. Exit")
             try:
                 choice = input("Enter your choice: ")
                 if choice == "1":
-                    import wordle
-                    clear()  # Clear the terminal
+                    import wordle  # Import the wordle game
+                    clear()
                     print("Welcome to Wordle!")
                     wordle.game.start_game()  # Start a game of Wordle
                 elif choice == "2":
-                    import tictactoe
-                    clear()  # Clear the terminal
+                    import tictactoe  # Import the tictactoe game
+                    clear()
                     print("Welcome to Tic-Tac-Toe!")
-                    tictactoe.main_loop()
+                    tictactoe.main_loop()  # Start a game of tictactoe
+                elif choice == "3":
+                    import hangman  # Import the hangman game
+                    clear()
+                    print("Welcome to hangman!")
+                    hangman.game.main_loop()
                 elif choice == "4":
                     clear()  # Clear the terminal
                     print("Goodbye!")

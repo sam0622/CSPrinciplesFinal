@@ -9,6 +9,7 @@ Sam0622(GitHub Username)
 # TODO: Make the main game loop, also comment and docstring
 from wonderwords import RandomWord
 from replit import clear
+from time import sleep
 
 
 class Hangman:
@@ -34,8 +35,8 @@ class Hangman:
     """
 
     def __init__(self):
-
         self.word = self.generate_word()
+        print(self.word)
         self.incomplete_word = ["_" for _ in self.word]  # Adjust amount of underscores
         self.guessed_letters = []  # All guessed letters
         self.correct_guesses = []  # Only correct letters
@@ -43,6 +44,15 @@ class Hangman:
         self.guesses = 0
 
     def generate_word(self):
+        """
+        Generates a random word with length between 4 and 16, sanitizes it, and returns it
+
+        Args:
+            None
+
+        Returns:
+            r_word (str): The sanitized random word
+        """
         r = RandomWord()
         r_word = r.word(word_min_length=4, word_max_length=16)
         r_word = r_word.lower()
@@ -69,6 +79,7 @@ class Hangman:
         """
 
         while True:
+            print(self.word)
             guess = input("Guess a letter: ")
             if guess.isalpha() and len(guess) == 1 and guess not in self.guessed_letters:
                 self.guessed_letters.append(guess)
@@ -113,7 +124,8 @@ class Hangman:
             None
 
         """
-        for i in range(0, len(self.incorrect_guesses), 3):  # A loop that starts at zero, increments by three, and stops at the length of the list
+        # A loop that starts at zero, increments by three, and stops at the length of the list
+        for i in range(0, len(self.incorrect_guesses), 3):
             print(" ".join(self.incorrect_guesses[i:i+3]))  # Prints the 3 entries from the list selected above
 
     def print_hangman(self, stage):
@@ -121,7 +133,7 @@ class Hangman:
         Prints the hangman in different stages depending on the times the player has guesses
 
         Args:
-            stage (int): The stage the hangman is in
+            stage (int): The stage the hangman is in, higher stage, more man
 
         Returns:
             None
@@ -165,12 +177,12 @@ class Hangman:
                           |
                           |
                           """)
-            case 4:
+            case 4:  # The "\" is an escape character, to make it not do that, you have to put two, it shows up as one \
                 print("""
                       ________
                       |      |
                       |      O    
-                      |     /|\
+                      |     /|\\
                       |
                       |
                       """)
@@ -179,7 +191,7 @@ class Hangman:
                       ________
                       |      |
                       |      O    
-                      |     /|\
+                      |     /|\\
                       |     /
                       |
                       """)
@@ -188,16 +200,81 @@ class Hangman:
                       ________
                       |      |
                       |      O    
-                      |     /|\
-                      |     / \
+                      |     /|\\
+                      |     / \\
                       |
                       """)
+            case _:
+                print("ERROR: Player guesses exceeds 6.")
+                raise ValueError
+
+
+    def play_again(self):
+        """
+        Restarts the game or goes back to the menu depending on user input
+
+        Args:
+            None
+
+        Returns:
+            None
+        """
+        if str.lower(input("Do you want to play again? (y/n) ")) == "y":
+            self.__init__()  # Reintialize the Hangman class and variables
+            # Fake loading bar
+            print("Starting new game.")
+            sleep(1)
+            print("Starting new game..")
+            sleep(1)
+            print("Starting new game...")
+            sleep(1)
+            clear()
+            self.main_loop()  # Restart the game
+        else:
+            clear()  # Clear the terminal
+            print("Goodbye!")
+            input()  # Wait for input
+            clear()
+            import main  # Dynamically grab the main menu script
+            main.menu.choose_game()  # Return to menu
+
+
+
 
     def main_loop(self):
-        while self.incomplete_word != self.word:
+        """
+        The main game loop. Checks for win and loss conditions, then prints info and has the player guess
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        """
+        while True:
+            clear()  # Clear the terminal
+
+            # Loss detection
+            if self.guesses >= 6:
+                self.print_hangman(self.guesses)
+                print("you dead, dead as hell. The word was", self.word)
+                self.play_again()  # Prompt to play again
+                break
+
+            # Win detection
+            if ("".join(self.incomplete_word)) == self.word:
+                self.print_hangman(self.guesses)
+                self.print_incorrect_letters()
+                print("".join(self.incomplete_word))  # Print the incomplete word
+                print("You win! The word was", self.word)
+                self.play_again()  # Prompt to play again
+                break
+
+            # The actual input loop. Print info, and guess
             self.print_hangman(self.guesses)
             self.print_incorrect_letters()
-            print(str.join("", self.incomplete_word))
+            print(str.join("", self.incomplete_word))  # Print the incomplete word
             self.guess()
 
 
