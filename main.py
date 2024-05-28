@@ -1,5 +1,6 @@
 from replit import clear  # For clearing the terminal
 
+#TODO Game instructions and QOL changes
 
 class Menu:
 

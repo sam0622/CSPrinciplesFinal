@@ -4,9 +4,8 @@ Author: Samuel Greenfield
 Author Credentials: sgreenfield517@gmail.com(Home Email),
 samuel.greenfield@capeelizabethschools.org(School Email),
 Sam0622(GitHub Username)
-
 """
-# TODO: Make the main game loop, also comment and docstring
+
 from wonderwords import RandomWord
 from replit import clear
 from time import sleep
