@@ -5,7 +5,7 @@ Author Credentials: sgreenfield517@gmail.com (Home Email),
 samuel.greenfield@capeelizabethschools.org (School Email),
 Sam0622 (GitHub Username)
 """
-from time import sleep as eep  # Grab a command to sleep
+from time import sleep  # Grab a command to wait
 import colorama  # Grab a package for colored output
 from replit import clear  # Grab a command to clear the terminal
 
@@ -196,11 +196,11 @@ def play_again():
 
         # Fake loading bar
         print("Starting new game.")
-        eep(1)
+        sleep(1)
         print("Starting new game..")
-        eep(1)
+        sleep(1)
         print("Starting new game...")
-        eep(1)
+        sleep(1)
         main_loop()  # Restart the game
     else:
         clear()  # Clear the terminal
