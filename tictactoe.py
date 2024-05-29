@@ -223,7 +223,6 @@ def main_loop():
     global turn
 
     while True:
-        clear()  # Clear the terminal
         print_board()
         print("It's X's turn!")
         prompt_input("X")  # Prompt user for input
@@ -242,7 +241,6 @@ def main_loop():
             clear()  # Clear the terminal
             break
 
-        clear()
         print_board()
         print("It's O's turn!")
         prompt_input("O")

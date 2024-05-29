@@ -48,7 +48,7 @@ class Hangman:
 
         Args:
             None
-
+,
         Returns:
             r_word (str): The sanitized random word
         """
@@ -78,7 +78,6 @@ class Hangman:
         """
 
         while True:
-            print(self.word)
             guess = input("Guess a letter: ")
             if guess.isalpha() and len(guess) == 1 and guess not in self.guessed_letters:
                 self.guessed_letters.append(guess)
