@@ -1,7 +1,14 @@
+"""
+CS Principals final
+Author: Samuel Greenfield
+Author Credentials: sgreenfield517@gmail.com (Home Email),
+samuel.greenfield@capeelizabethschools.org (School Email),
+Sam0622 (GitHub Username)
+"""
+
 import colorama
 from replit import clear  # For clearing the terminal
 
-#TODO Game instructions and QOL changes
 
 class Menu:
 
@@ -37,7 +44,7 @@ class Menu:
                         # This ( lets me move the parentheses to another line
                         (print
 
-("""
+                         ("""
 Wordle is a game about words.
 You have six guesses to get a five letter word
 If any letter you guessed appears in the word and is in the correct spot,
@@ -46,7 +53,6 @@ If the letter appears in the word but is in the wrong spot,
 The letter will be""", colorama.Fore.LIGHTYELLOW_EX + "YELLOW", """
 And lastly, if the letter doesn't appear in the word at all,
 The letter will be""", colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + """RED
-
 """))
                         input("Press enter to continue ")
                         pass
@@ -59,14 +65,14 @@ The letter will be""", colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + """RE
                         # Print instructions
                         (print
 
-("""
+                         ("""
 Tic-Tac-Toe is a two-player game where the goal is to line up 3 X's or O's in a row
 These rows can be horizontal, diagonal, or vertical
 Whoever lines up a row first, wins
 If spaces are taken in a way that makes it impossible for anyone to win, the game will end in a tie
 
 """))
-                    input("Press enter to continue ")
+                        input("Press enter to continue ")
                     tictactoe.main_loop()  # Start a game of tictactoe
                 elif choice == "3":
                     import hangman  # Import the hangman game
@@ -75,7 +81,7 @@ If spaces are taken in a way that makes it impossible for anyone to win, the gam
                         # Print instructions
                         (print
 
-("""
+                         ("""
 Hangman is a word game where you have to guess a word one letter at a time
 If you get the letter correct, the letter will show up where it goes in the word
 For example, if the word is "soup" and you guess "o", the incomplete word will show "_o__"

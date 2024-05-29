@@ -1,3 +1,10 @@
+"""
+Tic-Tac-Toe for CS Principals final
+Author: Samuel Greenfield
+Author Credentials: sgreenfield517@gmail.com (Home Email),
+samuel.greenfield@capeelizabethschools.org (School Email),
+Sam0622 (GitHub Username)
+"""
 from time import sleep as eep  # Grab a command to sleep
 import colorama  # Grab a package for colored output
 from replit import clear  # Grab a command to clear the terminal
@@ -10,9 +17,9 @@ game_board = [[" ", " 1", "2", "3"],  # Define the game board
               ["3 ", "_", "_", "_"]]
 
 colored_board = [[" ", " 1", "2", "3"],  # Make a copy of the board for colored output
-                ["1 ", "_", "_", "_"],
-                ["2 ", "_", "_", "_"],
-                ["3 ", "_", "_", "_"]]  # Make a copy of the board for colored output
+                 ["1 ", "_", "_", "_"],
+                 ["2 ", "_", "_", "_"],
+                 ["3 ", "_", "_", "_"]]  # Make a copy of the board for colored output
 free_spaces = 9
 
 

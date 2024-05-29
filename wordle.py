@@ -1,3 +1,11 @@
+"""
+Wordle for CS Principals final
+Author: Samuel Greenfield
+Author Credentials: sgreenfield517@gmail.com (Home Email),
+samuel.greenfield@capeelizabethschools.org (School Email),
+Sam0622 (GitHub Username)
+"""
+
 import random  # For picking a random word
 import colorama  # For colored output
 from replit import clear  # For clearing the terminal
@@ -25,9 +33,10 @@ class Wordle:  # Class for the game mechanics
             None
         """
         self.word_list = word_list  # A list of words to choose from
+        self.chosen_word = random.choice(self.word_list)  # Pick a random word from the list
 
     def start_game(self):
-        self.chosen_word = random.choice(self.word_list)  # Pick a random word from the list
+        self.__init__(words)
         self.main_loop()  # Start the game loop
 
     def main_loop(self):

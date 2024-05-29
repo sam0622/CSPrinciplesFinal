@@ -1,9 +1,9 @@
 """
 Hangman for CS Principals final
 Author: Samuel Greenfield
-Author Credentials: sgreenfield517@gmail.com(Home Email),
-samuel.greenfield@capeelizabethschools.org(School Email),
-Sam0622(GitHub Username)
+Author Credentials: sgreenfield517@gmail.com (Home Email),
+samuel.greenfield@capeelizabethschools.org (School Email),
+Sam0622 (GitHub Username)
 """
 
 from wonderwords import RandomWord
@@ -206,7 +206,6 @@ class Hangman:
                 print("ERROR: Player guesses exceeds 6.")
                 raise ValueError
 
-
     def play_again(self):
         """
         Restarts the game or goes back to the menu depending on user input
@@ -218,7 +217,7 @@ class Hangman:
             None
         """
         if str.lower(input("Do you want to play again? (y/n) ")) == "y":
-            self.__init__()  # Reintialize the Hangman class and variables
+            self.__init__()  # Reinitialize the Hangman class and variables
             # Fake loading bar
             print("Starting new game.")
             sleep(1)
@@ -235,9 +234,6 @@ class Hangman:
             clear()
             import main  # Dynamically grab the main menu script
             main.menu.choose_game()  # Return to menu
-
-
-
 
     def main_loop(self):
         """
@@ -276,11 +272,4 @@ class Hangman:
             self.guess()
 
 
-
-
-
-
-
-
 game = Hangman()
-game.main_loop()
