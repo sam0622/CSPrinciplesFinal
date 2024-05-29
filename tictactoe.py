@@ -86,8 +86,8 @@ def prompt_input(player):
 
         # If desired spot is taken, error out and try again
         elif preview_board[chosen_row][chosen_col] != "_":
-            print("This spot is already taken. Please try again.")
             clear()
+            print(f"The spot {chosen_row},{chosen_col} is already taken, please choose a different one")
         else:
             clear()
             print("Previewing move...")
