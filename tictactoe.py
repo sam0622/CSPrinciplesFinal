@@ -236,25 +236,19 @@ def main_loop():
         if check_win("X"):  # If X has won:
             print_board()
             print("X has won!")
-            input()  # Wait for input
-            clear()  # Clear the terminal
             break  # Break the loop if X has won
 
         turn += 1  # Increment the turn counter by one
 
         if turn == 9:  # Tie detection
             print("It's a tie!")
-            input()  # Wait for input
-            clear()  # Clear the terminal
             break
 
         print_board()
         print("It's O's turn!")
         prompt_input("O")
         if check_win("O"):  # If O has won:
-            input()  # Wait for input
             print("O has won!")
-            clear()  # Clear the terminal
             break
 
         turn += 1

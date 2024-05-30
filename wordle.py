@@ -56,6 +56,7 @@ class Wordle:  # Class for the game mechanics
         Returns:
             None
         """
+        clear()
         if has_won:
             print("You won! The word was", colorama.Back.GREEN + colorama.Style.BRIGHT + self.chosen_word)
         else:
@@ -86,6 +87,7 @@ class Wordle:  # Class for the game mechanics
                 sleep(1)
                 print("Starting new game...")
                 sleep(1)
+                clear()
                 self.main_loop()
             else:
                 clear()  # Clear the terminal
