@@ -29,12 +29,12 @@ class Menu:
         while True:
             clear()  # Clear the terminal
             print("Games:")
-            print("1. Wordle")
-            print("2. Tic-Tac-Toe")
-            print("3. Hangman")
-            print("4. Exit")
+            print("1: Wordle")
+            print("2: Tic-Tac-Toe")
+            print("3: Hangman")
+            print("\n4: Exit")
             try:
-                choice = input("Enter your choice: ")
+                choice = input("Enter the number of the game you would like to play: ")
                 if choice == "1":
                     import wordle  # Import the wordle game
                     clear()
