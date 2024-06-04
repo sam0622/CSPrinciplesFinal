@@ -18,7 +18,6 @@ class Menu:
 
     Methods:
         choose_game: Brings up a menu for game choosing and gets you to the game
-
     """
     def choose_game(self):
         """
@@ -32,7 +31,6 @@ class Menu:
 
         Returns:
             None
-
         """
         while True:
             clear()  # Clear the terminal

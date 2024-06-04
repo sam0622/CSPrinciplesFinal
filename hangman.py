@@ -85,7 +85,7 @@ class Hangman:
             if guess.isalpha() and len(guess) == 1 and guess not in self.guessed_letters:
                 self.guessed_letters.append(guess)  # Add the letter to the ones that have been guessed before
                 self.check_guess(guess)  # Check the guess
-                break  
+                break
             elif guess in self.guessed_letters:
                 print("You have already guessed this letter")
             else:
@@ -101,13 +101,13 @@ class Hangman:
         Returns:
             None
         """
-        print("Guess: ", guess)
-        if guess in self.word:
+        print("Guess: ", guess)  # Print your guess
+        if guess in self.word:  # If the guess in in the chosen word
             length = len(self.word)
-            for i in range(0, length):
+            for i in range(0, length):  # Check what position the guess is in
                 if guess == self.word[i]:
                     self.correct_guesses.append(guess)
-                    self.incomplete_word[i] = guess
+                    self.incomplete_word[i] = guess  # Add the letter to the incomplete word
         else:
             self.guesses += 1
             self.incorrect_guesses.append(guess)
@@ -231,7 +231,7 @@ class Hangman:
         else:
             clear()  # Clear the terminal
             print("Goodbye!")
-            input()  # Wait for input
+            sleep(0.5)
             clear()
             import main  # Grab the main menu script so we can use it
             main.menu.choose_game()  # Return to menu
@@ -245,7 +245,6 @@ class Hangman:
 
         Returns:
             None
-
         """
         while True:
             clear()  # Clear the terminal
@@ -273,4 +272,4 @@ class Hangman:
             self.guess()
 
 
-game = Hangman()
+game = Hangman()  # Create an instance of hangman
