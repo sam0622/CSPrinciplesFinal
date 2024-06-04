@@ -22,7 +22,7 @@ class Wordle:  # Class for the game mechanics
         words (list, str): A list of words to choose from.
 
     Methods:
-        __init__  # Initalizes the class and chooses a word
+        __init__  # Initializes the class and chooses a word
         start_game  # Calls the __init__ method and starts the main loop
         main_loop  # Has the player guess six times, if the player doesn't get the word, they lose
         end_game  # Prints a win or loss message and calls play_again
