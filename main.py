@@ -32,9 +32,8 @@ class Menu:
             print("1: Wordle")
             print("2: Tic-Tac-Toe")
             print("3: Hangman")
-            print("\n4: Exit")
             try:
-                choice = input("Enter the number of the game you would like to play: ")
+                choice = input("\nEnter the number of the game you would like to play or type '4' to exit: ")
                 if choice == "1":
                     import wordle  # Import the wordle game
                     clear()
