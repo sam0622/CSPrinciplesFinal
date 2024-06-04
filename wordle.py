@@ -22,6 +22,15 @@ class Wordle:  # Class for the game mechanics
 
     Attributes:
         word_list (list, optional): A list of words to choose from. Defaults to word_list.words
+
+    Methods:
+        __init__  # Initalizes the class and chooses a word
+        start_game  # Calls the __init__ method and starts the main loop
+        main_loop  # Has the player guess six times, if the player doesn't get the word, they lose
+        end_game  # Prints a win or loss message and calls play_again
+        play_again  # Prompts the player to play again, if they do, the game restarts, otherwise, they go to the menu
+        check_guess  # Checks how correct a guess is, prints it with corresponding colors and if the word is guessed, ends the game
+
     """
     def __init__(self, word_list):
         """
@@ -58,9 +67,9 @@ class Wordle:  # Class for the game mechanics
         """
         clear()
         if has_won:
-            print("You won! The word was", colorama.Back.GREEN + colorama.Style.BRIGHT + self.chosen_word)
+            print("You won! The word was", colorama.Fore.BLACK + colorama.Back.LIGHTGREEN_EX + colorama.Style.BRIGHT + self.chosen_word)
         else:
-            print("You lost! The word was", colorama.Back.RED + colorama.Style.BRIGHT + self.chosen_word)
+            print("You lost! The word was", colorama.Fore.BLACK + colorama.Back.LIGHTRED_EX + colorama.Style.BRIGHT + self.chosen_word)
 
         self.play_again()
 
@@ -73,7 +82,6 @@ class Wordle:  # Class for the game mechanics
 
             Returns:
                 None
-
             """
             choice = str.lower(input("Would you like to play again? (y/n) "))
             if choice == "y" or choice == "yes":
@@ -109,30 +117,32 @@ class Wordle:  # Class for the game mechanics
         """
         output = ""
         if guess == self.chosen_word:
-            print(colorama.Back.GREEN + colorama.Style.BRIGHT + self.chosen_word)
+            print(colorama.Fore.BLACK + colorama.Back.LIGHTGREEN_EX + colorama.Style.BRIGHT + self.chosen_word)
             self.end_game(True)
         else:
             for letter in range(5):
                 if guess[letter] == self.chosen_word[letter]:
-                    output += colorama.Back.LIGHTGREEN_EX + colorama.Style.BRIGHT + guess[letter]
+                    output += colorama.Fore.BLACK + colorama.Back.LIGHTGREEN_EX + guess[letter]
                 elif guess[letter] in self.chosen_word:
-                    output += colorama.Back.LIGHTYELLOW_EX + guess[letter]
+                    output += colorama.Fore.BLACK + colorama.Back.LIGHTYELLOW_EX + guess[letter]
                 else:
-                    output += colorama.Back.LIGHTRED_EX + colorama.Style.BRIGHT + guess[letter]
+                    output += colorama.Fore.BLACK + colorama.Back.LIGHTRED_EX + guess[letter]
 
         print(output)
 
-
 class Player:
+    """
+    The class for the person playing Wordle
+
+    Attributes:
+        guesses (list)
+    """
     def __init__(self):
         """
         Initializes a new instance of the Player class with a list of guesses.
 
         Attributes:
             self.guesses (list): A list of guesses the player has made.
-
-        Returns:
-            None
         """
         self.guesses = []  # List of guesses the player has made
 
@@ -165,13 +175,3 @@ class Player:
 
 game = Wordle(words)  # Create a new instance of the Wordle class
 player = Player()  # Create a new instance of the Player class
-
-'''
-game.start_game()  # Start the game
-
-
-while len(player.guesses) < 6:  # Loop until the player has made 6 guesses
-    player.guess()
-
-game.end_game(False)  # End the game with player loss
-'''

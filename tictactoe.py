@@ -5,6 +5,7 @@ Author Credentials: sgreenfield517@gmail.com (Home Email),
 samuel.greenfield@capeelizabethschools.org (School Email),
 Sam0622 (GitHub Username)
 """
+
 from time import sleep  # Grab a command to wait
 import colorama  # Grab a package for colored output
 from replit import clear  # Grab a command to clear the terminal
@@ -62,10 +63,11 @@ def prompt_input(player):
     while True:
         try:  # Grab input
             print_board()
-            chosen_row = int(input("Enter horizontal row: "))
-            chosen_col = int(input("Enter vertical column: "))
-        except ValueError:  # If input is invalid, try again
-            print("Invalid input. Please try again.(1-3)")
+            chosen_row = int(input("Enter horizontal row: "))  # Prompt for row
+            chosen_col = int(input("Enter vertical column: "))  # Prompt for column
+        except ValueError:
+            # If input is invalid, try again, and again, and again
+            print("Invalid input. Please try again.(1-3)")  # Print an error
             while True:  # Input loop for invalid input
                 try:
                     clear()
@@ -73,9 +75,9 @@ def prompt_input(player):
                     for row in preview_board[0:]:
                         print(" ".join(row[0:]))
                     # Grab input
-                    chosen_row = int(input("Enter horizontal row: "))
-                    chosen_col = int(input("Enter vertical column: "))
-                    break
+                    chosen_row = int(input("Enter horizontal row: "))  # Prompt for row
+                    chosen_col = int(input("Enter vertical column: "))  # Prompt for column
+                    break  # Break out of the loop
                 except ValueError:  # If input is invalid, error out and try again
                     print("Invalid input. Please try again.(1-3)")
 
@@ -92,12 +94,12 @@ def prompt_input(player):
             clear()
             print("Previewing move...")
             if player == "X":
-                # Puts the player's symbol in the chosen row and column in red and then resets to prevent unintentional coloring
+                # Puts the player's symbol in the chosen row and column in red and then resets color
                 preview_board[chosen_row][
                     chosen_col] = colorama.Fore.RED + colorama.Style.BRIGHT + "X" + colorama.Style.RESET_ALL
                 free_spaces -= 1  # Reduce the number of free spaces by 1
             elif player == "O":
-                # Puts the player's symbol in the chosen row and column in blue and then resets to prevent unintentional coloring
+                # Puts the player's symbol in the chosen row and column in blue and then resets color
                 preview_board[chosen_row][
                     chosen_col] = colorama.Fore.BLUE + colorama.Style.BRIGHT + "O" + colorama.Style.RESET_ALL
                 free_spaces -= 1  # Reduce the number of free spaces by 1
@@ -143,7 +145,7 @@ def check_win(player):
     """
     A function to check if a player has won the game based on the current state of the game board.
     Args:
-        player: The player to check for winning (should be either "X" or "O")
+        player (str): The player to check for winning (should be either "X" or "O")
 
     Returns:
         bool: True if the player has won, False otherwise
@@ -211,7 +213,7 @@ def play_again():
         main.menu.choose_game()  # Return to menu
 
 
-turn = 0
+turn = 0  # Reset the turn counter
 
 
 def main_loop():
@@ -251,6 +253,6 @@ def main_loop():
             print("O has won!")
             break
 
-        turn += 1
+        turn += 1  # Increment the turn counter by one
 
-    play_again()
+    play_again()  # Prompt to play again

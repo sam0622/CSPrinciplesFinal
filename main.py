@@ -6,12 +6,20 @@ samuel.greenfield@capeelizabethschools.org (School Email),
 Sam0622 (GitHub Username)
 """
 
-import colorama
-from replit import clear  # For clearing the terminal
-
+import colorama  # Grab a package for colored output
+from replit import clear  # Grab a package for clearing the terminal
 
 class Menu:
+    """
+    The class for the main menu where you select games
 
+    Attributes:
+        None
+
+    Methods:
+        choose_game: Brings up a menu for game choosing and gets you to the game
+
+    """
     def choose_game(self):
         """
         A function that allows the user to choose a game.
