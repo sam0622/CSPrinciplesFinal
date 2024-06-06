@@ -59,8 +59,8 @@ The letter will be""", colorama.Fore.LIGHTYELLOW_EX + "YELLOW", """
 And lastly, if the letter doesn't appear in the word at all,
 The letter will be""", colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + """RED
 """))
-                        input("Press enter to continue ")
-                        pass
+                        input("Press enter to continue to game")
+                        clear()
                     print("Welcome to Wordle!")
                     wordle.game.start_game()  # Start a game of Wordle
                 elif choice == "2":
@@ -77,7 +77,7 @@ Whoever lines up a row first, wins
 If spaces are taken in a way that makes it impossible for anyone to win, the game will end in a tie
 
 """))
-                        input("Press enter to continue ")
+                        input("Press enter to continue to game ")
                     tictactoe.main_loop()  # Start a game of tictactoe
                 elif choice == "3":
                     import hangman  # Import the hangman game
@@ -100,8 +100,7 @@ The amount of the person's body corresponds to the number of incorrect guesses
 For example, one wrong guess just shows the head, two shows the head and torso, three adds an arm, and so on
 
 """))
-                    input("Press enter to continue")
-                    print("Welcome to hangman!")
+                        input("Press enter to continue to game")
                     hangman.game.main_loop()  # Start a game of hangman
                 elif choice == "4":
                     clear()  # Clear the terminal
