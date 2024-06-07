@@ -9,6 +9,7 @@ Sam0622 (GitHub Username)
 import colorama  # Grab a package for colored output
 from replit import clear  # Grab a package for clearing the terminal
 
+
 class Menu:
     """
     The class for the main menu where you select games
