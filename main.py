@@ -15,11 +15,20 @@ class Menu:
     The class for the main menu where you select games
 
     Attributes:
-        None
+        devmode (bool): A debug mode that allows the user to see the chosen word in the word based games,
+            enabled by typing "devmode.enable" in the menu
 
     Methods:
+        __init__: Initiates the class and turns off devmode
         choose_game: Brings up a menu for game choosing and gets you to the game
     """
+
+    def __init__(self):
+        """
+        Initiates the Menu class and sets devmode to false
+        """
+        self.devmode = False
+
     def choose_game(self):
         """
         A function that allows the user to choose a game.
@@ -61,7 +70,7 @@ The letter will be""", colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + """RE
                     input("Press enter to continue to game")
                     clear()
                 print("Welcome to Wordle!")
-                wordle.game.start_game()  # Start a game of Wordle
+                wordle.game.start_game(self.devmode)  # Start a game of Wordle
             elif choice == "2":
                 import tictactoe  # Import the tictactoe game
                 clear()
@@ -100,11 +109,17 @@ For example, one wrong guess just shows the head, two shows the head and torso, 
 
 """))
                     input("Press enter to continue to game")
-                hangman.game.main_loop()  # Start a game of hangman
+                hangman.game.main_loop(self.devmode)  # Start a game of hangman
             elif choice == "4":
                 clear()  # Clear the terminal
                 print("Goodbye!")
                 exit(0)
+            elif choice == "devmode.enable":
+                self.devmode = True
+                clear()
+                print("Devmode enabled. If you enabled this accidentally please restart the program. \n\
+For those who enabled it intentionally, please note that it resets after every game.")
+
             else:
                 clear()
                 print("Invalid choice. Please try again.")

@@ -67,7 +67,7 @@ class Hangman:
 
         return r_word  # Returns the scrubbed word
 
-    def guess(self):
+    def guess(self, devmode=False):
         """
         This function gets the players guess and sends it to check_guess.
         If you have guessed incorrectly once or more before, it will show all wrong letters.
@@ -80,6 +80,8 @@ class Hangman:
             None
         """
         while True:
+            if devmode:
+                print(f"game.word == {self.word}")
             guess = input("Guess a letter: ")
             # If the letter is a letter, is just one letter, and has not been guessed already
             if guess.isalpha() and len(guess) == 1 and guess not in self.guessed_letters:
@@ -87,9 +89,16 @@ class Hangman:
                 self.check_guess(guess)  # Check the guess
                 break
             elif guess in self.guessed_letters:
-                print("You have already guessed this letter")
+                print(f"You have already guessed the letter '{guess}'")
+                self.print_hangman(self.guesses)
+                self.print_incorrect_letters()
+                print(str.join("", self.incomplete_word))  # Print the incomplete word
             else:
+                clear()
                 print("Invalid guess, please guess again")
+                self.print_hangman(self.guesses)
+                self.print_incorrect_letters()
+                print(str.join("", self.incomplete_word))  # Print the incomplete word
 
     def check_guess(self, guess):
         """
@@ -236,7 +245,7 @@ class Hangman:
             import main  # Grab the main menu script so we can use it
             main.menu.choose_game()  # Return to menu
 
-    def main_loop(self):
+    def main_loop(self, devmode=False):
         """
         The main game loop. Checks for win and loss conditions, then prints info and has the player guess
 
@@ -269,7 +278,7 @@ class Hangman:
             self.print_hangman(self.guesses)
             self.print_incorrect_letters()
             print(str.join("", self.incomplete_word))  # Print the incomplete word
-            self.guess()
+            self.guess(devmode)
 
 
 game = Hangman()  # Create an instance of hangman

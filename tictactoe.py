@@ -7,6 +7,7 @@ Sam0622 (GitHub Username)
 """
 
 from time import sleep  # Grab a command to wait
+
 import colorama  # Grab a package for colored output
 from replit import clear  # Grab a command to clear the terminal
 
@@ -22,6 +23,7 @@ colored_board = [[" ", " 1", "2", "3"],  # Make a copy of the board for colored 
                  ["2 ", "_", "_", "_"],
                  ["3 ", "_", "_", "_"]]  # Make a copy of the board for colored output
 free_spaces = 9
+
 
 def print_board():
     """
@@ -63,11 +65,16 @@ def prompt_input(player):
         try:  # Grab input
             print_board()
             chosen_row = int(input("Enter horizontal row: "))  # Prompt for row
+            # If input is out of range, error out and try again
             if chosen_row < 1 or chosen_row > 3:
+                clear()
                 print("Invalid input. Please try again.(1-3)")
                 continue
+
             chosen_col = int(input("Enter vertical column: "))  # Prompt for column
+            # If input is out of range, error out and try again
             if chosen_col < 1 or chosen_col > 3:
+                clear()
                 print("Invalid input. Please try again.(1-3)")
                 continue
         except ValueError:
@@ -75,11 +82,6 @@ def prompt_input(player):
             clear()
             print("Invalid input. Please try again.(1-3)")  # Print an error
             continue
-
-        # If input is out of bounds, error out and try again
-        #if chosen_row < 1 or chosen_row > 3 or chosen_col < 1 or chosen_col > 3:
-            #print("Invalid input. Please try again.(1-3)")
-            #clear()
 
         # If desired spot is taken, error out and try again
         if preview_board[chosen_row][chosen_col] != "_":
