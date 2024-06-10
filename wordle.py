@@ -45,6 +45,7 @@ class Wordle:  # Class for the game mechanics
 
     def start_game(self):
         self.__init__()  # Generate a random word
+        player.__init__()
         self.main_loop()  # Start the game loop
 
     def main_loop(self):
@@ -98,7 +99,7 @@ class Wordle:  # Class for the game mechanics
         else:
             clear()  # Clear the terminal
             print("Goodbye!")
-            input()  # Wait for input
+            sleep(0.5)
             clear()
             import main  # Dynamically grab the main menu script
             main.menu.choose_game()  # Return to menu

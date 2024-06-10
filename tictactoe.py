@@ -23,7 +23,6 @@ colored_board = [[" ", " 1", "2", "3"],  # Make a copy of the board for colored 
                  ["3 ", "_", "_", "_"]]  # Make a copy of the board for colored output
 free_spaces = 9
 
-
 def print_board():
     """
     A function to print the colored board.
@@ -64,30 +63,26 @@ def prompt_input(player):
         try:  # Grab input
             print_board()
             chosen_row = int(input("Enter horizontal row: "))  # Prompt for row
+            if chosen_row < 1 or chosen_row > 3:
+                print("Invalid input. Please try again.(1-3)")
+                continue
             chosen_col = int(input("Enter vertical column: "))  # Prompt for column
+            if chosen_col < 1 or chosen_col > 3:
+                print("Invalid input. Please try again.(1-3)")
+                continue
         except ValueError:
-            # If input is invalid, try again, and again, and again
+            # If input is invalid, try again,
+            clear()
             print("Invalid input. Please try again.(1-3)")  # Print an error
-            while True:  # Input loop for invalid input
-                try:
-                    clear()
-                    # Print the preview board
-                    for row in preview_board[0:]:
-                        print(" ".join(row[0:]))
-                    # Grab input
-                    chosen_row = int(input("Enter horizontal row: "))  # Prompt for row
-                    chosen_col = int(input("Enter vertical column: "))  # Prompt for column
-                    break  # Break out of the loop
-                except ValueError:  # If input is invalid, error out and try again
-                    print("Invalid input. Please try again.(1-3)")
+            continue
 
         # If input is out of bounds, error out and try again
-        if chosen_row < 1 or chosen_row > 3 or chosen_col < 1 or chosen_col > 3:
-            print("Invalid input. Please try again.(1-3)")
-            clear()
+        #if chosen_row < 1 or chosen_row > 3 or chosen_col < 1 or chosen_col > 3:
+            #print("Invalid input. Please try again.(1-3)")
+            #clear()
 
         # If desired spot is taken, error out and try again
-        elif preview_board[chosen_row][chosen_col] != "_":
+        if preview_board[chosen_row][chosen_col] != "_":
             clear()
             print(f"The spot {chosen_row},{chosen_col} is already taken, please choose a different one")
         else:
@@ -185,17 +180,17 @@ def play_again():
     """
     global game_board, colored_board, free_spaces, turn
 
+    game_board = [[" ", " 1", "2", "3"],  # Reset the game board
+                  ["1 ", "_", "_", "_"],
+                  ["2 ", "_", "_", "_"],
+                  ["3 ", "_", "_", "_"]]
+
+    colored_board = game_board  # Reset the colored board
+    free_spaces = 9  # Reset the free spaces counter
+    turn = 0  # Reset the turn counter
+
     choice = str.lower(input("Would you like to play again? (y/n) "))
     if choice == "y" or choice == "yes":
-        game_board = [[" ", " 1", "2", "3"],  # Reset the game board
-                      ["1 ", "_", "_", "_"],
-                      ["2 ", "_", "_", "_"],
-                      ["3 ", "_", "_", "_"]]
-
-        colored_board = game_board  # Reset the colored board
-        free_spaces = 9  # Reset the free spaces counter
-        turn = 0  # Reset the turn counter
-
         # Fake loading bar
         print("Starting new game.")
         sleep(1)
@@ -207,7 +202,7 @@ def play_again():
     else:
         clear()  # Clear the terminal
         print("Goodbye!")
-        input()  # Wait for input
+        sleep(0.5)
         clear()
         import main  # Dynamically grab the main menu script
         main.menu.choose_game()  # Return to menu

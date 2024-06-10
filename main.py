@@ -34,23 +34,21 @@ class Menu:
             None
         """
         while True:
-            clear()  # Clear the terminal
             print("Games:")
             print("1: Wordle")
             print("2: Tic-Tac-Toe")
             print("3: Hangman")
-            try:
-                choice = input("\nEnter the number of the game you would like to play or type '4' to exit: ")
-                if choice == "1":
-                    import wordle  # Import the wordle game
+            choice = input("\nEnter the number of the game you would like to play or type '4' to exit: ")
+            if choice == "1":
+                import wordle  # Import the wordle game
+                clear()
+                if str.lower(input("Would you like instructions? (y/n) ")) == 'y':
                     clear()
-                    if str.lower(input("Would you like instructions? (y/n) ")) == 'y':
-                        clear()
-                        # Print the instructions across multiple lines
-                        # This ( lets me move the parentheses to another line
-                        (print
+                    # Print the instructions across multiple lines
+                    # This ( lets me move the parentheses to another line
+                    (print
 
-                         ("""
+                     ("""
 Wordle is a game about words.
 You have six guesses to get a five letter word
 If any letter you guessed appears in the word and is in the correct spot,
@@ -60,34 +58,34 @@ The letter will be""", colorama.Fore.LIGHTYELLOW_EX + "YELLOW", """
 And lastly, if the letter doesn't appear in the word at all,
 The letter will be""", colorama.Fore.LIGHTRED_EX + colorama.Style.BRIGHT + """RED
 """))
-                        input("Press enter to continue to game")
-                        clear()
-                    print("Welcome to Wordle!")
-                    wordle.game.start_game()  # Start a game of Wordle
-                elif choice == "2":
-                    import tictactoe  # Import the tictactoe game
+                    input("Press enter to continue to game")
                     clear()
-                    if str.lower(input("Would you like instructions? (y/n) ")) == 'y':  # Prompt for instructions
-                        # Print instructions
-                        (print
+                print("Welcome to Wordle!")
+                wordle.game.start_game()  # Start a game of Wordle
+            elif choice == "2":
+                import tictactoe  # Import the tictactoe game
+                clear()
+                if str.lower(input("Would you like instructions? (y/n) ")) == 'y':  # Prompt for instructions
+                    # Print instructions
+                    (print
 
-                         ("""
+                     ("""
 Tic-Tac-Toe is a two-player game where the goal is to line up 3 X's or O's in a row
 These rows can be horizontal, diagonal, or vertical
 Whoever lines up a row first, wins
 If spaces are taken in a way that makes it impossible for anyone to win, the game will end in a tie
 
 """))
-                        input("Press enter to continue to game ")
-                    tictactoe.main_loop()  # Start a game of tictactoe
-                elif choice == "3":
-                    import hangman  # Import the hangman game
-                    clear()
-                    if str.lower(input("Would you like instructions? (y/n) ")) == 'y':
-                        # Print instructions
-                        (print
+                    input("Press enter to continue to game ")
+                tictactoe.main_loop()  # Start a game of tictactoe
+            elif choice == "3":
+                import hangman  # Import the hangman game
+                clear()
+                if str.lower(input("Would you like instructions? (y/n) ")) == 'y':
+                    # Print instructions
+                    (print
 
-                         ("""
+                     ("""
 Hangman is a word game where you have to guess a word one letter at a time
 If you get the letter correct, the letter will show up where it goes in the word
 For example, if the word is "soup" and you guess "o", the incomplete word will show "_o__"
@@ -101,15 +99,17 @@ The amount of the person's body corresponds to the number of incorrect guesses
 For example, one wrong guess just shows the head, two shows the head and torso, three adds an arm, and so on
 
 """))
-                        input("Press enter to continue to game")
-                    hangman.game.main_loop()  # Start a game of hangman
-                elif choice == "4":
-                    clear()  # Clear the terminal
-                    print("Goodbye!")
-                    exit(0)
-            except ValueError:
+                    input("Press enter to continue to game")
+                hangman.game.main_loop()  # Start a game of hangman
+            elif choice == "4":
+                clear()  # Clear the terminal
+                print("Goodbye!")
+                exit(0)
+            else:
+                clear()
                 print("Invalid choice. Please try again.")
 
 
 menu = Menu()
+clear()
 menu.choose_game()

@@ -30,7 +30,7 @@ class Hangman:
         generate_word(): Generates a word randomly and gets rid of characters like "-" and "'"
         guess(): Prompts the player for a guess and makes sure it is valid
         check_guess(): Checks if the guessed letter is in the word and adds it to incomplete_word
-        print_incorrect_letters(): Prints all of the guessed letters that are not in the word
+        print_incorrect_letters(): Prints all the guessed letters that are not in the word
         print_hangman(): Print the hangman himself
     """
 
@@ -102,7 +102,7 @@ class Hangman:
             None
         """
         print("Guess: ", guess)  # Print your guess
-        if guess in self.word:  # If the guess in in the chosen word
+        if guess in self.word:  # If the guess is in the chosen word
             length = len(self.word)
             for i in range(0, length):  # Check what position the guess is in
                 if guess == self.word[i]:
@@ -216,8 +216,8 @@ class Hangman:
         Returns:
             None
         """
+        self.__init__()  # Reinitialize the Hangman class and variables
         if str.lower(input("Do you want to play again? (y/n) ")) == "y":
-            self.__init__()  # Reinitialize the Hangman class and variables
             # Fake loading bar
             # The sleep function pauses the program for a given time
             print("Starting new game.")
